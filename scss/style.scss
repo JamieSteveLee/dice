@@ -14,6 +14,34 @@ body,
 	display: flex;
 	flex-direction: column;
 }
+.button {
+	border: 2px solid #fff;
+	border-radius: 10px;
+	text-align: center;
+	padding: 10px;
+	width: 100%;
+	max-width: 200px;
+	display: block;
+	cursor: pointer;
+}
+
+// Breakpoints
+// Small devices (landscape phones, 576px and up)
+$break-s: 340px;
+
+// Medium devices (tablets, 768px and up)
+$break-m: 390px;
+
+// Large devices (desktops, 992px and up)
+$break-l: 992px;
+
+// Extra large devices (large desktops, 1200px and up)
+$break-xl: 1200px;
+
+@mixin square($side) {
+    width: $side;
+    padding-bottom: $side;
+}
 
 header {
 	color: #fff;
@@ -26,8 +54,12 @@ header {
 		padding: 5px 10px;
 		font-size: 22px;
 	}
+	.button-open {
+		cursor: pointer;
+	}
 	.button-close {
 		display: none;
+		cursor: pointer;
 	}
 	&.options-open {
 		.button-open {
@@ -74,15 +106,6 @@ header {
 		    > div {
 		    	flex: 1;
 		    	padding: 10px;
-
-		    	> div {
-	    		    border: 2px solid #fff;
-				    border-radius: 10px;
-				    text-align: center;
-				    padding: 10px;
-				    width: 100%;
-				    display: block;
-		    	}
 		    }
 		}
 	}
@@ -95,10 +118,16 @@ header {
 	overflow: scroll;
 
 	.die-wrap {
-	    width: calc(100% / 4);
 	    height: 0;
-	    padding-bottom: calc(100% / 4);
 	    position: relative;
+	    @include square(calc(100% / 4));
+
+	    @media (min-width: $break-s) { 
+			@include square(calc(100% / 5));
+		}
+		@media (min-width: $break-m) { 
+			@include square(70px);
+		}
 
 		div[class^="die-"] {
 		    font-size: 20px;
@@ -156,15 +185,10 @@ footer {
     align-items: center;
     padding: 10px 10px 10px 20px;
 
+	.roll-all {
+		float: right;
+	}
     > div {
 		flex: 1;
-    }
-    .roll-all {
-		border: 2px solid #fff;
-	    border-radius: 10px;
-	    text-align: center;
-	    padding: 10px;
-	    width: 100%;
-	    display: block;
     }
 }

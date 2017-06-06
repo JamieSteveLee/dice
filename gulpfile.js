@@ -11,7 +11,7 @@ gulp.task('styles', function() {
 
 gulp.task('scripts', function() {
   return gulp.src(['js/*.js'])
-    .pipe(concat('script.js'))
+    .pipe(concat('scripts.min.js'))
     .pipe(uglify())
     .pipe(gulp.dest('.'));
 });
