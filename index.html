@@ -1,16 +1,26 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<head>
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-		<script src="https://use.fontawesome.com/d5895a3b55.js"></script>
-		<script type="text/javascript" src="scripts.min.js"></script>
-		<link rel="stylesheet" href="style.css" type="text/css" />
+		ga('create', 'UA-75223844-2', 'auto');
+		ga('send', 'pageview');
+	</script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 
-		<title>Dice</title>
-	</head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://use.fontawesome.com/d5895a3b55.js"></script>
+	<script type="text/javascript" src="scripts.min.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+	<link rel="stylesheet" href="style.css" type="text/css" />
+
+	<title>Dice</title>
+</head>
 <body>
 
 	<div class="page-wrap">
@@ -20,55 +30,97 @@
 				<i class="fa fa-close button-close" aria-hidden="true"></i>
 			</div>
 				<div class="options-wrap">
+					<h3>Standard Dice</h3>
 					<div class="dice-bag">
 						<div class="add-wrap">
-							<div class="add add-d4" data-type="d4">
+							<div class="add add-d4" data-type="d4" data-sides="4" data-startatzero="false" data-percentile="false">
 								<span>d4</span>
 							</div>
 						</div>
 						<div class="add-wrap">
-							<div class="add add-d6" data-type="d6">
+							<div class="add add-d6" data-type="d6" data-sides="6" data-startatzero="false" data-percentile="false">
 								<span>d6</span>
 							</div>
 						</div>
 						<div class="add-wrap">
-							<div class="add add-d8" data-type="d8">
+							<div class="add add-d8" data-type="d8" data-sides="8" data-startatzero="false" data-percentile="false">
 								<span>d8</span>
 							</div>
 						</div>
 						<div class="add-wrap">
-							<div class="add add-d10" data-type="d10">
+							<div class="add add-d10" data-type="d10" data-sides="10" data-startatzero="true" data-percentile="false">
 								<span>d10</span>
 							</div>
 						</div>
 						<div class="add-wrap">
-							<div class="add add-d12" data-type="d12">
+							<div class="add add-d10p" data-type="d10p" data-sides="10" data-startatzero="true" data-percentile="true">
+								<span>d10*</span>
+							</div>
+						</div>
+						<div class="add-wrap">
+							<div class="add add-d12" data-type="d12" data-sides="12" data-startatzero="false" data-percentile="false">
 								<span>d12</span>
 							</div>
 						</div>
 						<div class="add-wrap">
-							<div class="add add-d20" data-type="d20">
+							<div class="add add-d20" data-type="d20" data-sides="20" data-startatzero="false" data-percentile="false">
 								<span>d20</span>
 							</div>
 						</div>
-						<div class="add-wrap">
-							<div class="add add-d120" data-type="d120">
-								<span>d120</span>
+					</div>
+
+					<div class="accordion-wrap collapsed">
+						<h3 class="accordion-button">More Dice <i class="fa fa-plus" aria-hidden="true"></i><i class="fa fa-minus" aria-hidden="true"></i></h3>
+						<div class="accordion-content">
+							<div class="more-dice">
+								<div class="add-wrap">
+									<div class="add add-d100" data-type="d100" data-sides="100" data-startatzero="false" data-percentile="false">
+										<span>d100</span>
+									</div>
+								</div>
+								<div class="add-wrap">
+									<div class="add add-d120" data-type="d120" data-sides="120" data-startatzero="false" data-percentile="false">
+										<span>d120</span>
+									</div>
+								</div>
+								<div class="add-wrap">
+									<div class="add add-betrayal-d3" data-type="betrayal-d3" data-sides="3" data-startatzero="true" data-percentile="false">
+										<span>Betrayal d3</span>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
+					<div class="accordion-wrap collapsed">
+						<h3 class="accordion-button">Dice Sets <i class="fa fa-plus" aria-hidden="true"></i><i class="fa fa-minus" aria-hidden="true"></i></h3>
+						<div class="accordion-content">
+							<div class="dice-sets">
+								<div>
+									<div class="set button" data-set="betrayal">Betrayal haunt roll</div>
+								</div>
+								<div>
+									<div class="set button" data-set="dnd">Dungeons &amp; Dragons</div>
+								</div>
+								<div>
+									<div class="set button" data-set="perudo">Perudo</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
 					<div class="other-options">
 						<div>
 							<div class="remove-all button">Remove All</div>
 						</div>
-<!-- 						<div>
-							<div class="dnd">D&amp;D Dice set</div>
-						</div> -->
 					</div>
 				</div>
 		</header>
 		
-		<div class="main"></div>
+		<div class="main">
+			<div class="welcome-message">
+				<span>Add Dice</span>
+			</div>
+		</div>
 		
 		<footer>
 			<div>

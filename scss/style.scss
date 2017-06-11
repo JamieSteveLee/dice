@@ -1,6 +1,6 @@
 * {
 	box-sizing: border-box;
-	font-family: arial;
+	font-family: 'Open Sans', sans-serif;
 }
 html,
 body {
@@ -10,32 +10,36 @@ body,
 .page-wrap {
 	height: 100vh;
 }
+h3 {
+	width: 100%;
+    margin: 0 0 10px 5px;
+    font-weight: 300;
+    font-size: 14px;
+    text-transform: uppercase;
+}
 .page-wrap {
 	display: flex;
 	flex-direction: column;
 }
 .button {
-	border: 2px solid #fff;
+	border: 1px solid #fff;
 	border-radius: 10px;
 	text-align: center;
 	padding: 10px;
 	width: 100%;
 	max-width: 200px;
 	display: block;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 	cursor: pointer;
 }
 
 // Breakpoints
-// Small devices (landscape phones, 576px and up)
 $break-s: 340px;
-
-// Medium devices (tablets, 768px and up)
 $break-m: 390px;
-
-// Large devices (desktops, 992px and up)
 $break-l: 992px;
-
-// Extra large devices (large desktops, 1200px and up)
 $break-xl: 1200px;
 
 @mixin square($side) {
@@ -46,8 +50,18 @@ $break-xl: 1200px;
 header {
 	color: #fff;
 	background-color: #9d0a0e;
-    margin-bottom: 20px;
 
+	.accordion-button {
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+		cursor: pointer;
+
+		.fa {
+			padding-left: 4px;
+		}
+	}
 	.settings-bar {
 		width: 100%;
 		text-align: right;
@@ -55,6 +69,7 @@ header {
 		font-size: 22px;
 	}
 	.button-open {
+		display: block;
 		cursor: pointer;
 	}
 	.button-close {
@@ -72,17 +87,31 @@ header {
 
 	.options-wrap {
 		display: none;
+		padding: 0 5px;
+
+		.accordion-wrap {
+	    	&.collapsed {
+	    		.fa-minus {
+	    			display: none;
+	    		}
+			}
+			&.expanded {
+	    		.fa-plus {
+	    			display: none;
+	    		}
+			}
+
+		}
 
 		.dice-bag {
-		    padding: 10px;
-		    overflow: hidden;
 	        display: flex;
 		    flex-wrap: wrap;
-			
+		    margin-bottom: 16px;
+		    overflow: hidden;
+
 			.add-wrap {
 				padding: 5px;
 			}
-
 			.add {
 			    width: 50px;
 			    height: 50px;
@@ -99,14 +128,33 @@ header {
 			    cursor: pointer;
 			}
 		}
-		.other-options {
+		.other-options,
+		.more-dice,
+		.dice-sets {
 		    display: flex;
-		    padding: 10px;
+		    flex-wrap: wrap;
+		    margin-bottom: 16px;
 
+			.add {
+				border: 1px solid #fff;
+			    border-radius: 10px;
+			    text-align: center;
+			    padding: 10px;
+			    -webkit-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+		        user-select: none;
+			    cursor: pointer;
+			}
 		    > div {
-		    	flex: 1;
-		    	padding: 10px;
+		    	padding: 5px;
 		    }
+		}
+		.accordion-content {
+			display: none;
+		}
+		.remove-all {
+		    margin-top: 4px;
 		}
 	}
 }
@@ -115,6 +163,7 @@ header {
 	display: flex;
 	flex-wrap: wrap;
     align-content: flex-start;
+	padding-top: 20px;
 	overflow: scroll;
 
 	.die-wrap {
@@ -132,7 +181,6 @@ header {
 		div[class^="die-"] {
 		    font-size: 20px;
 		    color: #000;
-		    cursor: pointer;
 		    position: absolute;
 		    background-size: contain;
 		    background-position: center;
@@ -148,18 +196,21 @@ header {
 			-moz-user-select: none;
 			-ms-user-select: none;
 	        user-select: none;
+	        cursor: pointer;
 		}
 		.die-d4 {
 			background: url('images/d4.jpg');
 		}
-		.die-d6 {
+		.die-d6,
+		.die-betrayal-d3 {
 			background: url('images/d6.jpg');
 		}
 		.die-d8 {
 			background: url('images/d8.jpg');
 		    padding-top: 4px;
 		}
-		.die-d10 {
+		.die-d10,
+		.die-d10p {
 			background: url('images/d10.jpg');
 			padding-top: 14px;
 		}
@@ -169,10 +220,29 @@ header {
 		.die-d20 {
 			background: url('images/d20.jpg');
 		}
+		.die-d100,
 		.die-d120 {
 			border: 3px solid #000;
 			border-radius: 50%;
 		}
+	}
+	.welcome-message {
+	    display: flex;
+	    width: 100%;
+	    text-transform: uppercase;
+	    justify-content: center;
+	    align-items: center;
+	    padding-bottom: 80px;
+
+	    span {
+	    	color: #b22222;
+	    	font-size: 30px;
+		    font-weight: 700;
+	    	padding: 10px 20px;
+		    border: 4px solid #b22222;
+		    border-radius: 10px;
+		    cursor: pointer;
+	    }
 	}
 
 }
